@@ -1,0 +1,448 @@
+WEBVTT
+X-TIMESTAMP-MAP=MPEGTS:130000,LOCAL:00:00:00.000
+
+1
+00:00:05.790 --> 00:00:09.180
+Alright, now the next step, when
+we click on an item, we want to
+
+2
+00:00:09.180 --> 00:00:13.140
+highlight it. To do that we have
+a CSS class in Bootstrap called
+
+3
+00:00:13.230 --> 00:00:17.250
+active. So back to our code.
+This is where we are rendering a
+
+4
+00:00:17.250 --> 00:00:20.100
+list item, I'm going to give
+this a second class called
+
+5
+00:00:20.130 --> 00:00:25.260
+active. Now, look, all of them
+are highlighted or activated.
+
+6
+00:00:25.500 --> 00:00:28.710
+This is not what we want, you
+want to highlight one item at a
+
+7
+00:00:28.710 --> 00:00:32.310
+time. To do that, we need a
+variable to keep track of the
+
+8
+00:00:32.340 --> 00:00:37.980
+index of the selected item. So
+back to our component. List,
+
+9
+00:00:37.980 --> 00:00:42.690
+declare a variable called
+selected index, we can
+
+10
+00:00:42.720 --> 00:00:46.410
+initialize this to negative one,
+that means no item is selected.
+
+11
+00:00:46.830 --> 00:00:50.520
+If we set this to zero, that
+means the first item should be
+
+12
+00:00:50.520 --> 00:00:56.190
+selected. Now, down here, we can
+render this active class
+
+13
+00:00:56.340 --> 00:00:58.800
+dynamically. So we're going to
+use the same technique you
+
+14
+00:00:58.800 --> 00:01:02.460
+learned in the conditional
+rendering lesson. So I'm going
+
+15
+00:01:02.460 --> 00:01:06.870
+to remove the quotations. Here
+we add braces, so we render
+
+16
+00:01:06.870 --> 00:01:11.250
+content dynamically. Here, we
+can check the selected index, if
+
+17
+00:01:11.250 --> 00:01:16.110
+it equals the index of the
+current item. That means that
+
+18
+00:01:16.110 --> 00:01:19.140
+item should be active. So we're
+going to give it two classes,
+
+19
+00:01:19.320 --> 00:01:24.660
+list, group item, and active.
+Otherwise, we should only give
+
+20
+00:01:24.660 --> 00:01:29.820
+it the list group item class.
+This is a very simple way to add
+
+21
+00:01:29.820 --> 00:01:33.210
+classes dynamically. There are
+other more advanced techniques,
+
+22
+00:01:33.300 --> 00:01:35.910
+let's not worry about them at
+this stage, let's just see if
+
+23
+00:01:35.910 --> 00:01:40.020
+this works or not. So back to
+the browser. Now the first item
+
+24
+00:01:40.020 --> 00:01:43.230
+is selected. Beautiful. Now when
+we click on an item, we should
+
+25
+00:01:43.230 --> 00:01:48.210
+change the selected index. So
+this is where we're handling the
+
+26
+00:01:48.210 --> 00:01:51.990
+click event. Now in this case,
+we need a simple error function
+
+27
+00:01:51.990 --> 00:01:55.050
+to update the selected index. So
+I'm going to get rid of this
+
+28
+00:01:55.080 --> 00:01:59.610
+handle click function. So we
+delete it from here, as well as
+
+29
+00:01:59.610 --> 00:02:05.490
+here. We should also delete the
+mouse event import on the time.
+
+30
+00:02:05.760 --> 00:02:10.020
+Okay, so always pay attention to
+cleaning up your code. So here
+
+31
+00:02:10.020 --> 00:02:13.530
+we write a simple error
+function. And here was set
+
+32
+00:02:13.590 --> 00:02:18.630
+selected index to the index of
+the current item. Okay, now back
+
+33
+00:02:18.630 --> 00:02:23.040
+to the browser. Let's click on
+item, nothing is happening. Why
+
+34
+00:02:23.040 --> 00:02:27.330
+is that? Well, this variable we
+have declared here is local to
+
+35
+00:02:27.330 --> 00:02:30.780
+this function component. So
+React is not aware of it, it's
+
+36
+00:02:30.780 --> 00:02:34.320
+like a little secret inside this
+component. To solve this
+
+37
+00:02:34.320 --> 00:02:37.620
+problem, we should tell react
+that this component is going to
+
+38
+00:02:37.620 --> 00:02:41.610
+have data or a state that might
+change over time. And to do
+
+39
+00:02:41.610 --> 00:02:44.370
+that, we have to use one of the
+built in functions in React
+
+40
+00:02:44.370 --> 00:02:49.200
+called use state. So when we
+type this here, and press Enter,
+
+41
+00:02:49.710 --> 00:02:53.760
+it gets imported on the top.
+Okay. Now this function is
+
+42
+00:02:53.760 --> 00:02:58.650
+called a hook. A hook is a
+function that allows us to tap
+
+43
+00:02:58.650 --> 00:03:01.980
+into built in features in React.
+So this is called the state
+
+44
+00:03:01.980 --> 00:03:04.890
+hook, we have other hooks that
+you will learn about. As we go
+
+45
+00:03:04.890 --> 00:03:08.040
+through this course, using the
+state hook, we can tell react
+
+46
+00:03:08.130 --> 00:03:11.730
+that this component can have
+data or state, that will change
+
+47
+00:03:11.730 --> 00:03:15.570
+over time. So instead of
+declaring a variable this way,
+
+48
+00:03:15.780 --> 00:03:18.630
+we're going to call this
+function. Now we're going to
+
+49
+00:03:18.630 --> 00:03:21.900
+initialize our variable, we can
+give it the initial value of
+
+50
+00:03:21.900 --> 00:03:26.820
+negative one. Now this returns
+an array. In this array, we're
+
+51
+00:03:26.820 --> 00:03:30.690
+going to have two elements, the
+first element is going to be a
+
+52
+00:03:30.690 --> 00:03:35.460
+variable, like our selected
+index variable. And the second
+
+53
+00:03:35.490 --> 00:03:40.170
+element is going to be an
+updater function. Using the
+
+54
+00:03:40.200 --> 00:03:43.890
+updater function, we can update
+this variable. And at that
+
+55
+00:03:43.890 --> 00:03:47.460
+point, react will be notified.
+So it knows that the state of
+
+56
+00:03:47.460 --> 00:03:50.580
+our component is changed. And
+then it will rerender our
+
+57
+00:03:50.580 --> 00:03:54.930
+component, which causes the DOM
+to be updated under the hood. So
+
+58
+00:03:54.930 --> 00:03:57.900
+as I told you earlier in the
+course, with React, we almost
+
+59
+00:03:57.900 --> 00:04:01.080
+never have to touch the DOM
+directly. We think in terms of
+
+60
+00:04:01.080 --> 00:04:04.110
+components that have state, when
+the state of a component
+
+61
+00:04:04.110 --> 00:04:08.130
+changes, react will update the
+DOM to match the new component
+
+62
+00:04:08.130 --> 00:04:12.120
+state. Okay. Now let's see how
+we can use this. So instead of
+
+63
+00:04:12.120 --> 00:04:15.780
+working with two individual
+elements here, it's easier to D
+
+64
+00:04:15.780 --> 00:04:20.190
+structure this array into two
+elements. So the first element
+
+65
+00:04:20.190 --> 00:04:23.700
+is going to be select an index.
+And the second element is going
+
+66
+00:04:23.700 --> 00:04:28.050
+to be a function which we call
+set selected index. This is a
+
+67
+00:04:28.050 --> 00:04:32.160
+convention we follow in React
+applications. So here we have a
+
+68
+00:04:32.160 --> 00:04:35.610
+state variable called selected
+index. And here we have a
+
+69
+00:04:35.610 --> 00:04:39.840
+function called Set selected
+index. Now as another example,
+
+70
+00:04:40.020 --> 00:04:43.230
+we can use the state hook to
+declare another variable called
+
+71
+00:04:43.350 --> 00:04:47.700
+name. So recall, you state, we
+can initialize the name to an
+
+72
+00:04:47.700 --> 00:04:51.120
+empty string. This returns an
+array which we can destructure
+
+73
+00:04:51.180 --> 00:04:57.000
+into two elements, name and set
+name. That's the idea. Now, in
+
+74
+00:04:57.000 --> 00:05:00.180
+this case, we don't need a name
+variable. So let's delete This
+
+75
+00:05:00.180 --> 00:05:05.640
+line, and the comment and the
+slide. So here we have a state
+
+76
+00:05:05.640 --> 00:05:10.560
+variable called selected index.
+Now down here, to update this
+
+77
+00:05:10.560 --> 00:05:14.790
+variable, we're going to call
+set selected index and give it
+
+78
+00:05:15.480 --> 00:05:20.820
+the new index. With this, when
+we click on an item, it gets
+
+79
+00:05:20.850 --> 00:05:24.810
+selected, beautiful. So this is
+how we tell react that our
+
+80
+00:05:24.810 --> 00:05:28.470
+component can have state that
+will change over time. Now one
+
+81
+00:05:28.470 --> 00:05:31.020
+thing you need to know about
+components state is that each
+
+82
+00:05:31.020 --> 00:05:34.620
+component is going to have its
+own state. So if we go back to
+
+83
+00:05:34.620 --> 00:05:38.670
+our app component, and add
+another instance of our list
+
+84
+00:05:38.670 --> 00:05:43.470
+group here, each list group is
+going to have its own state. So
+
+85
+00:05:44.130 --> 00:05:47.520
+in our first list group, Paris
+is selected. But in our second
+
+86
+00:05:47.520 --> 00:05:51.270
+list group, nothing is selected
+because this component has its
+
+87
+00:05:51.300 --> 00:05:55.710
+own state, so they will be
+independent of each other. Okay.
+
+88
+00:05:56.160 --> 00:05:58.740
+Now, we don't need to list
+groups here. So I'm going to
+
+89
+00:05:58.740 --> 00:06:00.030
+remove the second one
+
+
